@@ -1,6 +1,6 @@
 from itertools import chain, combinations
 from F2Algebra import *
-khovanovParameter = 2
+khovanovParameter = 1
 def powerSet(iterable):
     "powerset([1,2,3]) → () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
     s = iterable
@@ -681,11 +681,9 @@ def zCoefficient(khovanovGenerators, gradings, signedFlowCategory, matchings, z)
         #print('c:', c)
         cLength = len(c)
         KElement = 0
-        switchBackNo = 0
         doubleSignedTwists = 0
         for i in range(cLength): #Adds the products of adjacencies
             KElement += (c[i%cLength] * c[(i+1)%cLength])
-            KElement += max(c[i%cLength], c[(i+1)%cLength])
             KElement += c[i]#Adds each vertex
             triple = (c[i], c[(i+1)%cLength], c[(i+2)%cLength])
             #Odd Kh part: accounts for flipping
@@ -737,9 +735,7 @@ def zCoefficient(khovanovGenerators, gradings, signedFlowCategory, matchings, z)
                 if (triple[2]-triple[0]) % 2 == 0 and (((selectedEdge in edgeAssignmentSet) + ((y,z) in oddArrowYZSet)) % 2 == 1):
                     if khovanovParameter % 2 == 1:
                         KElement += 1 #adds 1 if we are in the odd or second odd realization
-            KElement += sorted(triple)[1]#Adds the middle of the value set of  each triple
-            if sorted(triple)[1] != triple[1]:#Counts the number of times the path turns around (should be even)
-                switchBackNo +=  1
+
             if triple[0] == triple[2]:
                 if triple[1] < triple[0]:
                     KElement += 1
@@ -760,8 +756,6 @@ def zCoefficient(khovanovGenerators, gradings, signedFlowCategory, matchings, z)
         #print('doubleSignedTwists:', doubleSignedTwists)
         if  (khovanovParameter % 4) in {2,3}:
             KElement += (doubleSignedTwists // 2)
-        #print(switchBackNo)
-        KElement += (switchBackNo // 2) #Adds half the number of times the path turns around
         KElement += 1 #adds 1 at the end
         Z2Element += KElement
     return Z2Element%2
@@ -777,7 +771,7 @@ def Sq2(khovanovGenerators, gradings, signedFlowCategory, kernel):
     #print('Sq2:', gradings, kernel, khovanovGenerators.hqToSparseMatrix[(gradings[0]+2,gradings[1])]*Sq2Set)
     #print('check:', gradings, khovanovGenerators.hqToSparseMatrix[(gradings[0]+2,gradings[1])]*Sq2Set)
     if khovanovGenerators.hqToSparseMatrix[(gradings[0]+2,gradings[1])]*Sq2Set != set():
-        print('help!')
+        print('square is not in kernel!')
     return Sq2Set
 
 def Sq1Matrix(khovanovGenerators, gradings):
@@ -908,79 +902,28 @@ knot11_n6Dict = (((1, 12), 0), ((13, 14), 0), ((12, 13), "+"), ((7, 2), 0), ((1,
 conwayKnotDict = (((5,10), 0), ((1,4), 0), ((2,3), 0), ((4,5), '-'), ((6,7), 0), ((8,9), 0), ((3,4), '+'), ((5,6), '-'), ((7,8), '-'), ((9,10), '+'), ((2,3), '-'), ((4,5), '+'), ((6,7), '+'), ((9,10), '+'), ((3,4), '-'), ((5,6), 1), ((3,4), '-'), ((4,7), 1), ((3,8), 1), ((2,9), 1), ((1,10), 1))
 modifiedDisjointTrefoilDict = (((1,6), 0), ((2, 3), 0), ((5, 4), 0), ((3, 4), "+"), ((3, 4), "+"), ((3, 4), "+"), ((3, 2), 1), ((4, 5), 1), ((5, 4), 0), ((1, 4), "+"), ((1, 4), "+"), ((1, 4), "+"), ((4, 5), 1), ((1,6), 1))
 disjointTrefoilDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
-connectSumTrefoilDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((1, 2), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
+connectSumTrefoilDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((1, 2), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((1, 2), 1))
 disjointTrefoilMirrorDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1))
 trefoilPlus8_1Dict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((1, 2), "-"), ((1, 2), "-"), ((1, 2), "-"), ((1, 2), "-"), ((1, 2), "-"), ((2, 3), "+"), ((2, 3), "+"), ((1, 2), 1), ((3, 4), 1))
 trefoilPlus8_1MirrorDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((1, 2), "+"), ((1, 2), "+"), ((1, 2), "+"), ((1, 2), "+"), ((1, 2), "+"), ((2, 3), "-"), ((2, 3), "-"), ((1, 2), 1), ((3, 4), 1))
 trefoilDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
+twoFourTorusDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
+twoFourTwoFourDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
+twoFourConnectTwoFourUnknotDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((3, 4), 1), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((1, 2), 1))
 figure8TrefoilDict = (((1,2),0), ((3,4),0), ((2,3),'-'), ((2,3),'-'), ((3,4),'+'), ((3,4),'+'), ((2,3),1),((1,4),1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
-figure8TrefoilMirrorDict = (((1,2),0), ((3,4),0), ((2,3),'-'), ((2,3),'-'), ((3,4),'+'), ((3,4),'+'), ((2,3),1),((1,4),1),    ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1))
-figure8MirrorTrefoilDict = (((1,2),0), ((3,4),0), ((2,3),'+'), ((2,3),'+'), ((3,4),'-'), ((3,4),'-'), ((2,3),1),((1,4),1),    ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
+figure8TrefoilMirrorDict = (((1,2),0), ((3,4),0), ((2,3),'-'), ((2,3),'-'), ((3,4),'+'), ((3,4),'+'), ((2,3),1),((1,4),1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1))
+figure8MirrorTrefoilDict = (((1,2),0), ((3,4),0), ((2,3),'+'), ((2,3),'+'), ((3,4),'-'), ((3,4),'-'), ((2,3),1),((1,4),1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 randomDisjointUnionDict = (((1,4),0), ((6,5), 0), ((2,3), 0), ((4,5),'-'), ((1,2),'+'), ((3,4),'+'), ((2,3),'+'), ((1,2),'-'), ((3,4),'-'), ((2,3),1), ((4,5),1), ((1,6),1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 randomDisjointUnionMirrorDict = (((1,4),0), ((6,5), 0), ((2,3), 0), ((4,5),'+'), ((1,2),'-'), ((3,4),'-'), ((2,3),'-'), ((1,2),'+'), ((3,4),'+'), ((2,3),1), ((4,5),1), ((1,6),1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1))
 trefoil3ConnectSumDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((1, 2), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((1, 2), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 trefoil3xDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 trefoilMirror3xDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1))
-linkDict = trefoil3ConnectSumDict
+linkDict = twoFourConnectTwoFourUnknotDict
 linkMorseLink = morseLink(linkDict)
 print(linkMorseLink.componentNo)
 print('componentNo:', linkMorseLink.componentNo)
 #link = khovanovBasis(linkMorseLink)
-Q = -17
-#mh = link.hqToSparseMatrix[(-8,Q)]
-#mg = link.hqToSparseMatrix[(-7,Q)]
-#mf = link.hqToSparseMatrix[(-6,Q)]
-#me = link.hqToSparseMatrix[(-5,Q)]
-#md = link.hqToSparseMatrix[(-4,Q)]
-#mc = link.hqToSparseMatrix[(-3,Q)]
-#mb = link.hqToSparseMatrix[(-2,Q)]
-#ma = link.hqToSparseMatrix[(-1, Q)]
-#a = link.hqToSparseMatrix[(0, Q)]
-#b = link.hqToSparseMatrix[(1, Q)]
-#c = link.hqToSparseMatrix[(2, Q)]
-#d = link.hqToSparseMatrix[(3, Q)]
-#e = link.hqToSparseMatrix[(4, Q)]
-#f = link.hqToSparseMatrix[(5, Q)]
-#g = link.hqToSparseMatrix[(6, Q)]
-#h = link.hqToSparseMatrix[(7, Q)]
-#i = link.hqToSparseMatrix[(8, Q)]
-#j = link.hqToSparseMatrix[(9, Q)]
 
-#print(a)
-#print(b)
-#print(kernel(b))
-#print(image(a))
-#print(b*a)
-#print(ma)
-#print(mb)
-#print(ma*mb)
-#print(c)
-#print(d)
-#print(e)
-#print(b*a)
-#print(c*b)
-#print(d*c)
-#print(e*d)
-
-"""
-print('-7Homology:', homology(mg,mh))
-print('-6Homology:', homology(mf,mg))
-print('-5Homology:', homology(me,mf))
-print('-4Homology:', homology(md,me))
-print('-3Homology:', homology(mc,md))
-print('-2Homology:', homology(mb,mc))
-print('-1Homology:', homology(ma,mb))
-print('0Homology:', homology(a,ma))
-print('1Homology:', homology(b,a))
-print('2Homology:', homology(c,b))
-print('3Homology:', homology(d,c))
-print('4Homology:', homology(e,d))
-print('5Homology:', homology(f,e))
-print('6Homology:', homology(g,f))
-print('7Homology:', homology(h,g))
-print('8Homology:', homology(i,h))
-print('9Homology:', homology(j,i))
-"""
 
 #fC = flowCategory(linkMorseLink, link, (5, 19))
 #kernel for (-4. -13) on 10_124
