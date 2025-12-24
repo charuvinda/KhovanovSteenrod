@@ -291,9 +291,9 @@ class khovanovBasis:
         positiveCrossingNo = diagram.positiveCrossingNo
         minHomGrading = -1 - negativeCrossingNo
         maxHomGrading = noCrossingNos - negativeCrossingNo
-        minQuantumGrading = positiveCrossingNo - 2*negativeCrossingNo - 2*noCrossingNos
+        minQuantumGrading = positiveCrossingNo - 2*negativeCrossingNo - 2*noCrossingNos - 1
         #print('(minHomGrading,maxHomGrading):', minHomGrading,maxHomGrading)
-        maxQuantumGrading = positiveCrossingNo - 2*negativeCrossingNo + noCrossingNos + 2*noCrossingNos
+        maxQuantumGrading = positiveCrossingNo - 2*negativeCrossingNo + noCrossingNos + 2*noCrossingNos + 1
         edgeAssignment = xEdgeAssignment(diagram)
         self.edgeSet = edgeAssignment.edgeSet
         self.minHomGrading = minHomGrading
@@ -302,7 +302,7 @@ class khovanovBasis:
         self.maxQuantumGrading = maxQuantumGrading
         #for the signed part of Odd Khovanov homology. Some generators are going to be mapped to another generator via a minus sign
         differentialNegativeSignsDict = dict({})
-        powerSetDict = tuple(powerSet(list((i for i in range(m)))) for m in range(2*noCrossingNos + 1))
+        powerSetDict = tuple(powerSet(list((i for i in range(m)))) for m in range(2*noCrossingNos + 2))
         setOfUValues = powerSet(list(n for n in range(noCrossingNos))) #locations on the Kauffman cube
         indexToComponentDict = dict({}) #going to be a dictionary that takes a cube position u and outputs a sequencing of components
         componentToIndexDict = dict({})
@@ -918,7 +918,7 @@ randomDisjointUnionMirrorDict = (((1,4),0), ((6,5), 0), ((2,3), 0), ((4,5),'+'),
 trefoil3ConnectSumDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((1, 2), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((1, 2), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 trefoil3xDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 trefoilMirror3xDict = (((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1), ((1, 2), 0), ((4, 3), 0), ((2, 3), "-"), ((2, 3), "-"), ((2, 3), "-"), ((2, 1), 1), ((3, 4), 1))
-linkDict = disjointTrefoilDict
+linkDict = (((1,2),0), ((1,2),1))
 linkMorseLink = morseLink(linkDict)
 print(linkMorseLink.componentNo)
 print('componentNo:', linkMorseLink.componentNo)
