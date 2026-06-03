@@ -27,6 +27,17 @@ CASE 1b. You would like to compute St_i for a MorseLink presentation.
 CASE 2a. You would like to compute St_0 for a list of MorseLink presentations.
 CASE 2b. You would like to compute St_i for a list of MorseLink presentations.
 
+MorseLink Presentations:
+We encode an oriented link diagram as a MorseLink, which, by our definition, is a sequence of Morse moves and crossings moving left to right. It is written in the form (Move_1,Move_2,Move_3,...,Move_n), where
+1. Move_i is of the form ((a,b),X),
+2. a,b are distinct integers, indicating the rows these moves are happening (Moves on these rows indicate)
+3. X is either 0, 1, '+', or '-'
+X=0 indicates an index 0 critical point, or a birth. X=1 indicates an index 1 critical point, or a death. For example, the move ((2,3),0) would indicate the birth of two new strands, moving along rows 2 and 3.
+Here's an example of a MorseLink 
+<img width="1072" height="411" alt="image" src="https://github.com/user-attachments/assets/5fdd48e2-95dd-4204-9e0c-c9c2d90aef37" />
+
+
+
 Remember that if 
 1. r_1 is the rank of the map Sq^2 on gradings (i,j),
 2. r_2 is the rank of Sq^2 restricted to the kernel of Sq^1 on gradings (i,j),
