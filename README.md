@@ -9,3 +9,4 @@ St loader.py
 F2Algebra.py simply contains classes and functions needed to do linear algebra in the later python files, such as vector spaces, sparse matrices, reduced row echelon form, kernel, image, rank and nullity.
 
 EvenKhovanov.py contains the formula for St_0, which contains the information on Sq^1 and Sq^2 on the even Khovanov spectrum X_0(L). 
+<img src="https://latex.codecogs.com/png.latex?O_t=\text { Onset event at time bin } t " /> 
