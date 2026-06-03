@@ -33,9 +33,9 @@ We encode an oriented link diagram as a MorseLink, which, by our definition, is 
 2. a,b are distinct integers, indicating the rows these moves are happening (Moves on these rows indicate)
 3. X is either 0, 1, '+', or '-'
 X=0 indicates an index 0 critical point, or a birth. X=1 indicates an index 1 critical point, or a death. For example, the move ((2,3),0) would indicate the birth of two new strands, moving along rows 2 and 3.
-Here's an example of a MorseLink 
-<img width="1072" height="411" alt="image" src="https://github.com/user-attachments/assets/5fdd48e2-95dd-4204-9e0c-c9c2d90aef37" />
-
+X = '+' indicates that the strand at 
+Here's an example of a MorseLink diagram of an oriented negative trefoil: (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
+<img width="1072" height="411" alt="image" src="https://github.com/user-attachments/assets/affa27a0-bcac-4f97-8b71-f373026d76c8" />
 
 
 Remember that if 
