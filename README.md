@@ -20,7 +20,7 @@ St loader.py computes St_i, for any fixed i, for a list of MorseLink presentatio
 INSTRUCTIONS FOR USE:
 CASE 1a. You would like to compute St_0 for a MorseLink presentation.
 Step 1. Open EvenKhovanov.py
-Step 2. 
+Step 2. Enter your MorseLink presentation (instructions below on MorseLink presentations)
 
 CASE 1b. You would like to compute St_i for a MorseLink presentation.
 
