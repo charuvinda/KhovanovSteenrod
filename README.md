@@ -28,6 +28,7 @@ CASE 2a. You would like to compute St_0 for a list of MorseLink presentations.
 CASE 2b. You would like to compute St_i for a list of MorseLink presentations.
 
 MorseLink Presentations:
+In this section, we give a recipe for how to make your own Morselink presentation you can input
 We encode an oriented link diagram as a MorseLink, which, by our definition, is a sequence of Morse moves and crossings moving left to right. It is written in the form (Move_1,Move_2,Move_3,...,Move_n), where
 1. Move_i is of the form ((a,b),X),
 2. X is either 0, 1, '+', or '-'
