@@ -30,10 +30,12 @@ CASE 2b. You would like to compute St_i for a list of MorseLink presentations.
 MorseLink Presentations:
 We encode an oriented link diagram as a MorseLink, which, by our definition, is a sequence of Morse moves and crossings moving left to right. It is written in the form (Move_1,Move_2,Move_3,...,Move_n), where
 1. Move_i is of the form ((a,b),X),
-2. a,b are distinct integers, indicating the rows these moves are happening (Moves on these rows indicate)
-3. X is either 0, 1, '+', or '-'
+2. X is either 0, 1, '+', or '-'
+3. a,b are distinct integers, indicating the two rows that involve this move. In the case X is not '0', a must be less than b
+4. In the case that X is '0', then a may be greater than b. However, the orientation of the component containing this critical point is determined by the direction traveling from row a to row b. 
 X=0 indicates an index 0 critical point, or a birth. X=1 indicates an index 1 critical point, or a death. For example, the move ((2,3),0) would indicate the birth of two new strands, moving along rows 2 and 3.
-X = '+' indicates that the strand at 
+X = '+' indicates that the strand starting at higher index will move over the strand starting at lower index during the crossing.
+Likewise, X = '-' indicates that the strand starting at higher index will move over the strand starting at lower index during the crossing.
 Here's an example of a MorseLink diagram of an oriented negative trefoil: (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 <img width="1072" height="411" alt="image" src="https://github.com/user-attachments/assets/affa27a0-bcac-4f97-8b71-f373026d76c8" />
 
