@@ -31,6 +31,10 @@ Step 4. Run the code. Your output should be a set of tuples of the form ((i,j),(
 
 
 CASE 2a. You would like to compute St_0 for a list of MorseLink presentations.
+Step 1. Create a .txt file with the list of links you would like to compute. (There are some examples in the folder MorseLink tables for lists of n-crossing knots and links, and their mirrors.)
+Step 2. (Optional, if you want faster runtime) If you know the (i,j) gradings you want to compute for each link, write them down in order, matching the order of the MorseLinks. This should be written as a Python set variable (For examplle, write {(0, 1), (-1, -1), (-2, -3)} in the nth row if you want to compute St(L) for these gradings (i,j) or set() if you want to compute St(L) for none of the gradings).
+Step 3. Open Even Kh loader.py
+Step 4. If you have not done Step 2,
 
 CASE 2b. You would like to compute St_i for a list of MorseLink presentations.
 
@@ -40,8 +44,9 @@ We encode an oriented link diagram as a MorseLink, which, by our definition, is 
 1. Move_i is of the form ((a,b),X),
 2. X is either 0, 1, '+', or '-'
 3. a,b are distinct integers, indicating the two rows that involve this move. In the case X is not '0', a must be less than b
-4. In the case that X is '0', then a may be greater than b. However, the orientation of the component containing this critical point is determined by the direction traveling from row a to row b. 
-X=0 indicates an index 0 critical point, or a birth. X=1 indicates an index 1 critical point, or a death. For example, the move ((2,3),0) would indicate the birth of two new strands, moving along rows 2 and 3.
+4. In the case that X is '0', then a may be greater than b. However, the orientation of the component containing this critical point is determined by the direction traveling from row a to row b.
+
+X=0 indicates an index 0 critical point, or a birth. X=1 indicates an index 1 critical point, or a death. For example, the move ((2,3),0) would indicate the birth of two new strands, moving from row 2 to row 3.
 X = '+' indicates that the strand starting at higher index will move over the strand starting at lower index during the crossing.
 Likewise, X = '-' indicates that the strand starting at higher index will move over the strand starting at lower index during the crossing.
 Here's an example of a MorseLink diagram of an oriented negative trefoil: (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
