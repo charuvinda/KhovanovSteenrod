@@ -17,23 +17,35 @@ St loader.py computes St_i, for any fixed i, for a list of MorseLink presentatio
 INSTRUCTIONS FOR USE:
 
 CASE 1a. You would like to compute St_0 for a MorseLink presentation.
+
 Step 1. Open EvenKhovanov.py
+
 Step 2. Enter your MorseLink presentation into the prompt "linkDict = ..." towards the bottom of the code (instructions below on MorseLink presentations)
+
 Step 3. Run the code. Your output should be a set of tuples of the form ((i,j),(a,b,c,d)). Each tuple like this means that St(L)(i,j) = (a,b,c,d)
 
 CASE 1b. You would like to compute St_i for a MorseLink presentation for general i.
 Step 1. Open GenericKhovanov.py. 
+
 Step 2. Replace the text "khovanovParameter = ..." with "khovanovParameter = i" in the very beginning.
-Step 3. Enter your MorseLink presentation into the prompt "linkDict = ..." towards the bottom of the code (instructions below on MorseLink presentations)
+
+Step 3. Enter your MorseLink presentation into the prompt "linkDict = ..." towards the bottom of the code (instructions below on MorseLink presentations).
+
 Step 4. Run the code. Your output should be a set of tuples of the form ((i,j),(a,b,c,d)). Each tuple like this means that St(L)(i,j) = (a,b,c,d)
 
 
 CASE 2. You would like to compute St_i for a list of MorseLink presentations for arbitrary i.
+
 Step 1. Create a .txt file with the list of links you would like to compute. (There are some examples in the folder MorseLink tables for lists of n-crossing knots and links, and their mirrors.) Put it in the "MorseLink Tables" directory.
+
 Step 2. (Optional, if you want faster runtime) If you know the (i,j) gradings you want to compute for each link, write them down in a .txt file, with the nth line giving the gradings for the the nth MorseLink, matching the order of the MorseLinks. This should be written as a Python set variable. For examplle, write {(0, 1), (-1, -1), (-2, -3)} in the nth row if you want to compute St(L) for these gradings for the nth MorseLink. Put the .txt file in the "Grading List" directory.
+
 Step 3. Open St loader generic.py
+
 Step 4. If you want to just compute the function St_0, make sure that "from EvenKhovanov import *" is uncommented and "from EvenKhovanov import *" is commented. If you want to compute the function St_i for generic i, make sure that "from EvenKhovanov import *" is commented and "from EvenKhovanov import *" is uncommented. Also make sure that in GenericKhovanov.py, khovanovParameter is your desired parameter.
+
 Step 5. If you did Step 2, uncomment "StDataPrint('MorseLink Table.txt', 'Grading List.txt')" and comment "StDataNoGradingsPrint('MorseLink Table.txt')." Then, substitute the name of your MorseLink Table for 'MorseLink Table.txt' and the name of your grading list for 'Grading List.txt'. If you did not do Step 2, no problem. Just make sure to comment "StDataPrint('MorseLink Table.txt', 'Grading List.txt')" and uncomment "StDataNoGradingsPrint('MorseLink Table.txt')." Then, substitute the name of your MorseLink Table for 'MorseLink Table.txt'.
+
 Step 6. Run the code! Your St_i data should appear in a file claled data.txt.
 
 MorseLink Presentations:
