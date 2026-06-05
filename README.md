@@ -49,8 +49,7 @@ Step 5. If you did Step 2, uncomment "StDataPrint('MorseLink Table.txt', 'Gradin
 Step 6. Run the code! Your St_i data should appear in a file claled data.txt.
 
 MORSELINK PRESENTATIONS:
-In this section, we give a recipe for how to make your own Morselink presentation you can input
-We encode an oriented link diagram as a MorseLink, which, by our definition, is a sequence of Morse moves and crossings moving left to right. It is written in the form (Move_1,Move_2,Move_3,...,Move_n), where
+In this section, we give a recipe for how to write your own Morselink presentation for any link. We encode an oriented link diagram as a MorseLink, which, by our definition, is a sequence of Morse moves and crossings moving left to right. It is written in the form (Move_1,Move_2,Move_3,...,Move_n), where
 1. Move_i is of the form ((a,b),X),
 2. X is either 0, 1, '+', or '-'
 3. a,b are distinct integers, indicating the two rows that involve this move. In the case X is not '0', a must be less than b
