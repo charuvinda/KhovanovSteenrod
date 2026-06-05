@@ -46,7 +46,7 @@ Step 4. If you want to just compute the function St_0, make sure that "from Even
 
 Step 5. If you did Step 2, uncomment "StDataPrint('MorseLink Table.txt', 'Grading List.txt')" and comment "StDataNoGradingsPrint('MorseLink Table.txt')." Then, substitute the name of your MorseLink Table for 'MorseLink Table.txt' and the name of your grading list for 'Grading List.txt'. If you did not do Step 2, no problem. Just make sure to comment "StDataPrint('MorseLink Table.txt', 'Grading List.txt')" and uncomment "StDataNoGradingsPrint('MorseLink Table.txt')." Then, substitute the name of your MorseLink Table for 'MorseLink Table.txt'.
 
-Step 6. Run the code! Your St_i data should appear in a file claled data.txt.
+Step 6. Run the code! Your St_i data should appear in a file called data.txt.
 
 MORSELINK PRESENTATIONS:
 In this section, we give a recipe for how to write your own Morselink presentation for any link. We encode an oriented link diagram as a MorseLink, which, by our definition, is a sequence of Morse moves and crossings moving left to right. It is written in the form (Move_1,Move_2,Move_3,...,Move_n), where
