@@ -20,11 +20,18 @@ St loader.py computes St_i, for any fixed i, for a list of MorseLink presentatio
 INSTRUCTIONS FOR USE:
 CASE 1a. You would like to compute St_0 for a MorseLink presentation.
 Step 1. Open EvenKhovanov.py
-Step 2. Enter your MorseLink presentation (instructions below on MorseLink presentations)
+Step 2. Enter your MorseLink presentation into the prompt "linkDict = ..." towards the bottom of the code (instructions below on MorseLink presentations)
+Step 3. Run the code. Your output should be a set of tuples of the form ((i,j),(a,b,c,d)). Each tuple like this means that St(L)(i,j) = (a,b,c,d)
 
 CASE 1b. You would like to compute St_i for a MorseLink presentation.
+Step 1. Open EvenKhovanov.py. 
+Step 2. Replace the text "khovanovParameter = 0" with "khovanovParameter = i."
+Step 3. Enter your MorseLink presentation into the prompt "linkDict = ..." towards the bottom of the code (instructions below on MorseLink presentations)
+Step 4. Run the code. Your output should be a set of tuples of the form ((i,j),(a,b,c,d)). Each tuple like this means that St(L)(i,j) = (a,b,c,d)
+
 
 CASE 2a. You would like to compute St_0 for a list of MorseLink presentations.
+
 CASE 2b. You would like to compute St_i for a list of MorseLink presentations.
 
 MorseLink Presentations:
@@ -40,9 +47,9 @@ Likewise, X = '-' indicates that the strand starting at higher index will move o
 Here's an example of a MorseLink diagram of an oriented negative trefoil: (((1, 2), 0), ((4, 3), 0), ((2, 3), "+"), ((2, 3), "+"), ((2, 3), "+"), ((2, 1), 1), ((3, 4), 1))
 <img width="1072" height="411" alt="image" src="https://github.com/user-attachments/assets/affa27a0-bcac-4f97-8b71-f373026d76c8" />
 
-Here's an example of another MorseLink diagram for an oriented L6n1: (((1,4),0), ((5,6), 0), ((2,3), 0), ((4,5),'-'), ((1,2),'+'), ((3,4),'+'), ((2,3),'+'), ((1,2),'-'), ((3,4),'-'), ((2,3),1), ((4,5),1), ((1,6),1))
+Here's an example of another MorseLink diagram for an oriented L6n1: (((1,4),0), ((6,5), 0), ((3,2), 0), ((4,5),'-'), ((1,2),'+'), ((3,4),'+'), ((2,3),'+'), ((1,2),'-'), ((3,4),'-'), ((2,3),1), ((4,5),1), ((1,6),1))
 <img width="1245" height="455" alt="image" src="https://github.com/user-attachments/assets/a6172a96-443d-424d-b00c-fbb4ef968442" />
-
+Note how the first three moves are index 0 critical points, which orient the three link components. We first orient going from row 1 to row 4, row 6 to row 5, and row 3 to row 2.  
 
 Remember that if 
 1. r_1 is the rank of the map Sq^2 on gradings (i,j),
