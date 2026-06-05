@@ -1,4 +1,6 @@
 from GenericKhovanov import *
+#from EvenKhovanov import *
+#UNCOMMENT THE SECOND LINE AND COMMENT THE FIRST LINE IF YOU ONLY WANT TO COMPUTE THE ST FNCTION FOR THE EVEN HOMOTOPY TYPE X_0
 import ast
 
 def StDataPrint(MorseLinkFilePath, gradingsFilePath):
@@ -35,7 +37,6 @@ def StDataNoGradingsPrint(MorseLinkFilePath):
     for i in range(len(MorseLinkList)):
       linkDict = ast.literal_eval(MorseLinkList[i])
       linkMorseLink = morseLink(linkDict)
-      print(ast.literal_eval(gradingsList[i]))
       newLine = str(StList(linkMorseLink, 'all'))
       newContent += newLine + "\n"
       with open("data.txt", 'r+') as file:
@@ -44,16 +45,7 @@ def StDataNoGradingsPrint(MorseLinkFilePath):
   except FileNotFoundError:
     print(f"Error: File '{file_path}' not found.")
 
-    
-StDataPrint('MorseLink 9 Table.txt', 'Grading List 9.txt')
 
-"""
-linkDict = (((1, 6), 0), ((7, 10), 0), ((6, 7), "+"), ((2, 3), 0), ((1, 2), "-"), ((1, 2), "-"), ((9, 8), 0), ((7, 8), "-"), ((8, 9), "+"), ((4, 5), 0), ((3, 4), "+"), ((3, 4), "+"), ((5, 6), "+"), ((5, 6), "+"), ((6, 7), "-"), ((5, 6), "+"), ((5, 4), 1), ((6, 7), 1), ((3, 8), 1), ((9, 2), 1), ((10, 1), 1))
-linkMorseLink = morseLink(linkDict)
-gradingSet = {(-2, -5), (-7, -15), (-4, -9), (-6, -13), (-3, -7), (-5, -11)}
-
-x = ast.literal_eval('(((1, 6), 0), ((7, 10), 0), ((6, 7), "+"), ((2, 3), 0), ((1, 2), "-"), ((1, 2), "-"), ((9, 8), 0), ((7, 8), "-"), ((8, 9), "+"), ((4, 5), 0), ((3, 4), "+"), ((3, 4), "+"), ((5, 6), "+"), ((5, 6), "+"), ((6, 7), "-"), ((5, 6), "+"), ((5, 4), 1), ((6, 7), 1), ((3, 8), 1), ((9, 2), 1), ((10, 1), 1))')
-print(x)
-print(StList(linkMorseLink, gradingSet))
-"""
+StDataNoGradingsPrint('MorseLink 8 Table.txt')
+#StDataPrint('MorseLink 10 Table.txt', 'Grading List 10.txt')
 
