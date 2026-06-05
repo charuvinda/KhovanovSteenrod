@@ -1,5 +1,5 @@
 # KhovanovSteenrod
-This is a tool to compute the function St_1, St_2, St_3, and so on, on the families of even and odd Khovanov stable homotopy types X_0(L), X_1(L), X_2(L), and so on (St_i gives information about the spectra X_i). Really, the function St_i only depends on i mod 4, since the first and second Steenrod squares on X_i onldy depend on i mod 4. If you only want the second Steenrod square on the spectra X_i(L), i = 0 mod 4, this program by Robert Lipshitz and Sucharit Sarkar also does the job: https://github.com/sucharit/KhovanovSteenrod. There are 3 files of interest:
+This is a tool to compute the function St_1, St_2, St_3, and so on, on the families of even and odd Khovanov stable homotopy types X_0(L), X_1(L), X_2(L), and so on (St_i gives information about the spectra X_i). Really, the function St_i only depends on i mod 4, since the first and second Steenrod squares on X_i only depend on i mod 4. If you only want the second Steenrod square on the spectra X_i(L), i = 0 mod 4, this program by Robert Lipshitz and Sucharit Sarkar also does the job: https://github.com/sucharit/KhovanovSteenrod. There are 3 files of interest:
 F2Algebra.py
 EvenKhovanov.py
 GenericKhovanov.py
