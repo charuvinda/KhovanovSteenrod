@@ -71,4 +71,5 @@ Remember that if
 2. r_2 is the rank of Sq^2 restricted to the kernel of Sq^1 on gradings (i,j),
 3. r_3 is the dimension of the intersection of the image of Sq^2 and image of Sq^1 in gradings (i+2,j),
 4. r_4 is the dimension of the intersection of the image of Sq^1 and the image of (Sq^2 restricted to the kernel of Sq^1) in grading (i+2,j),
+
 then St(i,j) = (r_2-r_4,r_1-r_2-r_3+r_4,r_4,r_3-r_4).
